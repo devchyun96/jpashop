@@ -3,6 +3,7 @@ package jpabook.jpashop.domain;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Order {
     @JoinColumn(name="member_id")
     private Member member;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderItem> orderItems=new ArrayList<>();
 
